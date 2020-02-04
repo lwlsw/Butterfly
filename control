@@ -1,0 +1,12 @@
+Package: sh.litten.butterfly
+Name: Butterfly
+Depends: mobilesubstrate, preferenceloader, firmware (>= 9), ws.hbang.common (>= 1.14)
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Text Selection Colors Flying Around Everywhere
+Maintainer: Litten <hello@litten.sh>
+Author: Litten <hello@litten.sh>
+Section: Tweaks
+Depiction: https://repo.litten.sh/depictions/bty/index.html
+SileoDepiction: https://repo.litten.sh/depictions/bty/bty.json
+Icon: https://repo.litten.sh/depictions/bty/assets/icon.png
