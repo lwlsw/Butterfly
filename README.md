@@ -4,7 +4,7 @@ Text Selection Colors Flying Around Everywhere
 
 ## Installation
 
-1. Add this repository to your Package Manager: https://repo.litten.sh
+1. Add this repository to your Package Manager: https://repo.litten.love
 2. Install Butterfly.
 
 ## Bugs
