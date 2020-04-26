@@ -1,5 +1,7 @@
 #import "Butterfly.h"
 
+BOOL enabled;
+
 void setPreset() {
 
     int presetNumber = [selectedPreset intValue]; // just converting the NSString from the list view to an Integer
@@ -47,6 +49,51 @@ void setPreset() {
 
 }
 
+void setRandomColor() {
+
+    switch(randomNumber) {
+        case 1:
+            presetHex2 = @"#147efb";
+            break;
+        case 2:
+            presetHex2 = @"#34c759";
+            break;
+        case 3:
+            presetHex2 = @"#5856D6";
+            break;
+        case 4:
+            presetHex2 = @"#ff9500";
+            break;
+        case 5:
+            presetHex2 = @"#ff2d55";
+            break;
+        case 6:
+            presetHex2 = @"#af52de";
+            break;
+        case 7:
+            presetHex2 = @"#ff3b30";
+            break;
+        case 8:
+            presetHex2 = @"#5ac8fa";
+            break;
+        case 9:
+            presetHex2 = @"#ffcc00";
+            break;
+        case 10:
+            presetHex2 = @"#eeabff";
+            break;
+        case 11:
+            presetHex2 = @"#abefcb";
+            break;
+        case 12:
+            presetHex2 = @"#9966ff";
+            break;
+        default:
+            break;
+    }
+
+}
+
 %group Butterfly
 
 %hook UITextSelectionView
@@ -59,7 +106,17 @@ void setPreset() {
     colorString = [preferencesDictionary objectForKey: @"color"];
     customCursorString = [preferencesDictionary objectForKey: @"customCursorColor"];
 
-    if (enabled && cursorColorSwitch && !useCustomCursorColorSwitch && presetNumber == 0) {
+    if (enabled && useRandomColorSwitch) {
+        int min = 1;
+        int max = 12;
+        randomNumber = arc4random_uniform(max - min) + min;
+        setRandomColor();
+
+        UIColor* color = [SparkColourPickerUtils colourWithString: presetHex2 withFallback: @"#147efb"];
+        
+        return color;
+
+    } else if (enabled && cursorColorSwitch && !useCustomCursorColorSwitch && presetNumber == 0) {
         UIColor* color = [SparkColourPickerUtils colourWithString: colorString withFallback: @"#147efb"];
 
         return color;
@@ -90,7 +147,17 @@ void setPreset() {
     colorString = [preferencesDictionary objectForKey: @"color"];
     customCursorString = [preferencesDictionary objectForKey: @"customCursorColor"];
 
-    if (enabled && cursorColorSwitch && !useCustomCursorColorSwitch && presetNumber == 0) {
+    if (enabled && useRandomColorSwitch) {
+        int min = 1;
+        int max = 12;
+        randomNumber = arc4random_uniform(max - min) + min;
+        setRandomColor();
+
+        UIColor* color = [SparkColourPickerUtils colourWithString: presetHex2 withFallback: @"#147efb"];
+        
+        return color;
+
+    } else if (enabled && cursorColorSwitch && !useCustomCursorColorSwitch && presetNumber == 0) {
         UIColor* color = [SparkColourPickerUtils colourWithString: colorString withFallback: @"#147efb"];
 
         return color;
@@ -125,7 +192,17 @@ void setPreset() {
     colorString = [preferencesDictionary objectForKey: @"color"];
     customCursorString = [preferencesDictionary objectForKey: @"customCursorColor"];
 
-    if (enabled && cursorColorSwitch && !useCustomCursorColorSwitch && presetNumber == 0) {
+    if (enabled && useRandomColorSwitch) {
+        int min = 1;
+        int max = 12;
+        randomNumber = arc4random_uniform(max - min) + min;
+        setRandomColor();
+
+        UIColor* color = [SparkColourPickerUtils colourWithString: presetHex2 withFallback: @"#147efb"];
+        
+        %orig(color);
+
+    } else if (enabled && cursorColorSwitch && !useCustomCursorColorSwitch && presetNumber == 0) {
         UIColor* color = [SparkColourPickerUtils colourWithString: colorString withFallback: @"#147efb"];
 
         %orig(color);
@@ -245,6 +322,7 @@ void setPreset() {
     NSUInteger count = args.count;
     if (count != 0) {
         NSString *executablePath = args[0];
+        
         if (executablePath) {
             NSString *processName = [executablePath lastPathComponent];
             BOOL isApplication = [executablePath rangeOfString:@"/Application/"].location != NSNotFound || [executablePath rangeOfString:@"/Applications/"].location != NSNotFound;
@@ -254,10 +332,14 @@ void setPreset() {
                         || [processName isEqualToString:@"InCallService"]
                         || [processName isEqualToString:@"MessagesNotificationViewService"]
                         || [executablePath rangeOfString:@".appex/"].location != NSNotFound;
+
             if ((!isFileProvider && isApplication && !skip) || isSpringboard) {
                 shouldLoad = YES;
+
             }
+
         }
+
     }
 
     if (!shouldLoad) return;
@@ -292,6 +374,8 @@ void setPreset() {
     [pfs registerBool:&customAlphaSwitch default:NO forKey:@"customAlpha"];
 	[pfs registerObject:&alphaLevel default:@"0.1" forKey:@"alpha"];
 
+    [pfs registerBool:&useRandomColorSwitch default:NO forKey:@"useRandomColor"];
+
 	if (!dpkgInvalid && enabled) {
         BOOL ok = false;
         
@@ -301,8 +385,12 @@ void setPreset() {
         if (ok && [@"litten" isEqualToString:@"litten"]) {
             %init(Butterfly);
             return;
+
         } else {
             dpkgInvalid = YES;
+
         }
+
     }
+
 }

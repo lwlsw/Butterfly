@@ -6,30 +6,18 @@
 	<array>
 
 		<dict>
-            <key>cell</key>
-            <string>PSButtonCell</string>
-            <key>label</key>
-            <string>@Litteeen</string>
-            <key>cellClass</key>
-            <string>HBTwitterCell</string>
-            <key>label</key>
-            <string>Litten</string>
-            <key>user</key>
-            <string>Litteeen</string>
-        </dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<true/>
-			<key>defaults</key>
-			<string>sh.litten.butterflypreferences</string>
-			<key>key</key>
-			<string>Enabled</string>
-			<key>label</key>
-			<string>Enabled (Respring required)</string>
-			<key>PostNotification</key>
-			<string>sh.litten.butterflypreferences/ReloadPrefs</string>
+			<key>cellClass</key>
+			<string>DuoTwitterCell</string>
+			<key>firstLabel</key>
+			<string>Litten</string>
+			<key>firstAccount</key>
+			<string>Litteeen</string>
+			<key>secondLabel</key>
+			<string>taki</string>
+			<key>secondAccount</key>
+			<string>74k1_</string>
+			<key>height</key>
+			<real>57</real>
 		</dict>
 
 		<dict>
@@ -160,6 +148,20 @@
 			<key>defaults</key>
 			<string>sh.litten.butterflypreferences</string>
 			<key>key</key>
+			<string>useRandomColor</string>
+			<key>label</key>
+			<string>Use Random Colors From Presets</string>
+			<key>PostNotification</key>
+			<string>sh.litten.butterflypreferences/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>sh.litten.butterflypreferences</string>
+			<key>key</key>
 			<string>useCustomCursorColor</string>
 			<key>label</key>
 			<string>Custom Cursor Color</string>
@@ -265,22 +267,67 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Icon Design</string>
+			<string>Other Options</string>
 		</dict>
 		<dict>
-            <key>action</key>
-            <string>twittertaki</string>
-            <key>cell</key>
-            <string>PSButtonCell</string>
-            <key>label</key>
-            <string>@74k1_</string>
-            <key>cellClass</key>
-            <string>HBTwitterCell</string>
-            <key>label</key>
-            <string>taki</string>
-            <key>user</key>
-            <string>74k1_</string>
-        </dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Respring</string>
+			<key>action</key>
+			<string>respring</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Reset Preferences</string>
+			<key>action</key>
+			<string>resetPrompt</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Give These A Look</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>Rose</string>
+			<key>subtitle</key>
+			<string>System Wide Haptics, Great uh-huh</string>
+			<key>icon</key>
+			<string>Rose.png</string>
+			<key>url</key>
+			<string>https://repo.litten.love/depictions/rse/</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>Lune</string>
+			<key>subtitle</key>
+			<string>Let A Moon Icon Appear While In DND</string>
+			<key>icon</key>
+			<string>Lune.png</string>
+			<key>url</key>
+			<string>https://repo.litten.love/depictions/lne/</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>Aestea</string>
+			<key>subtitle</key>
+			<string>Miss Cream? Try Aestea</string>
+			<key>icon</key>
+			<string>Aestea.png</string>
+			<key>url</key>
+			<string>https://repo.litten.love/depictions/aes/</string>
+		</dict>
 
 		<!-- Support Me -->
 		<dict>
@@ -288,6 +335,9 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Support Me</string>
+			<key>footerText</key>
+			<string>Butterfly By Litten
+Artworks By taki</string>
 		</dict>
 		<dict>
 			<key>cellClass</key>
@@ -332,11 +382,13 @@
 
 		<dict>
 			<key>cell</key>
-			<string>PSGroupCell</string>
+			<key>PSGroupCell</key>
 			<key>footerText</key>
-			<string>Butterfly By Litten, Made With ❤️</string>
+			<string>Made With 💙</string>
 			<key>isStaticText</key>
 			<true/>
+			<key>footerAlignment</key>
+			<real>1</real>
 		</dict>
 
 	</array>
