@@ -48,7 +48,7 @@ void setPreset() {
     }
 
 }
-
+// I know i could use some other method to do it but i'm too lazy
 void setRandomColor() {
 
     switch(randomNumber) {

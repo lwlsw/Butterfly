@@ -1,7 +1,7 @@
 Package: sh.litten.butterfly
 Name: Butterfly 🦋
 Depends: mobilesubstrate, preferenceloader, firmware (>= 9), ws.hbang.common (>= 1.14), com.spark.libsparkcolourpicker
-Version: 1.1
+Version: 1.1.1
 Architecture: iphoneos-arm
 Description: Text Selection Colors Flying Around Everywhere
 Maintainer: Litten <hiya@litten.love>
