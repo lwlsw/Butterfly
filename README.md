@@ -7,6 +7,5 @@ Text Selection Colors Flying Around Everywhere
 1. Add this repository to your Package Manager: https://repo.litten.love
 2. Install Butterfly.
 
-## Bugs
-
-Found a bug? [open a new issue](https://github.com/Litteeen/Butterfly/issues/new).
+## Compiling
+No dependencies, just make package (make clean package)

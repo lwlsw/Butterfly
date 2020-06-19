@@ -5,18 +5,19 @@
 // Utils
 HBPreferences *pfs;
 
-// Thanks to Nepeta for the DRM
 BOOL dpkgInvalid = NO;
 
-// Option Switches
+// Enable The Tweak And Its Functionality
 extern BOOL enabled;
 BOOL cursorColorSwitch = YES;
 BOOL highlightColorSwitch = YES;
+
 // Color Options
 NSString* colorString = @"#147efb";
 NSString* selectedPreset = @"0";
 NSString* presetHex;
 NSString* presetHex2;
+
 // Custom Color Options
 BOOL useCustomCursorColorSwitch = NO;
 NSString* customCursorString = @"#147efb";
@@ -27,13 +28,9 @@ NSString* customHighlightString = @"#147efb";
 BOOL customAlphaSwitch = NO;
 NSString* alphaLevel = @"0.1";
 
+// Random Colors
 BOOL useRandomColorSwitch = NO;
-
 int randomNumber;
-
-@interface UITextInputTraits : NSObject
-@property (nonatomic,retain) UIColor * selectionHighlightColor; 
-@end
 
 @interface SBIconController : UIViewController
 - (void)viewDidAppear:(BOOL)animated;
